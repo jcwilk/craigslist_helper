@@ -1,6 +1,6 @@
 class CraigslistHelper < Sinatra::Base
   PAGES = [
-    'http://sfbay.craigslist.org/sby/fuo/3098332994.html'	
+    'http://sfbay.craigslist.org/eby/zip/3098595706.html'	
   ]
 
   get '/' do
