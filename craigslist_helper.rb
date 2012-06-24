@@ -15,7 +15,7 @@ Email me at <a href='mailto:jcwilk@gmail.com'>jcwilk@gmail.com</a> and I will ge
   end
 
   def get_link(url)
-    html = Dalli::Client.new.fetch(url,DALLI_TTL){RestClient.get(url))}
+    html = Dalli::Client.new.fetch(url,DALLI_TTL){RestClient.get(url)}
     doc=Nokogiri::HTML(html)
     title = doc.title
     imgs = doc.css('div#ci img')
