@@ -26,9 +26,8 @@ Email me at <a href='mailto:jcwilk@gmail.com'>jcwilk@gmail.com</a> and I will ge
     html = Dalli::Client.new.fetch(url,DALLI_TTL){RestClient.get(url)}
     doc=Nokogiri::HTML(html)
     title = doc.title
-    imgs = doc.css('div#ci img')
-    img = imgs.first[:src] if !imgs.empty?
-    "<a href='#{url}' target='_blank'>#{"<img src='#{img}'><br/>" if img}#{title}</a>"
+    imgs = doc.css('div#ci img').map{|i| i[:src] }.join('')
+    "<a href='#{url}' target='_blank'>#{imgs+'<br/>' if img}#{title}</a>"
   rescue
     nil
   end
