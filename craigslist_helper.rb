@@ -8,7 +8,7 @@ class CraigslistHelper < Sinatra::Base
 Near Dwight and Sacramento in Berkeley<br/>
 All items must go ASAP!!!<br/>
 Email me at jcwilk@gmail.com and I will get back to you right away<br/>
-<br/>"
+<br/>"+
     PAGES.map{|p| get_link(p) }.compact.join("<br/>")
   end
 
