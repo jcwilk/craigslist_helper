@@ -3,6 +3,8 @@ class CraigslistHelper < Sinatra::Base
     'http://sfbay.craigslist.org/sby/fuo/3098332994.html'	
   ]
 
+  DALLI_TTL = 20 #seconds
+
   get '/' do
     "MOVING SALE<br/>
 Near Dwight and Sacramento in Berkeley<br/>
@@ -13,7 +15,8 @@ Email me at <a href='mailto:jcwilk@gmail.com'>jcwilk@gmail.com</a> and I will ge
   end
 
   def get_link(url)
-    doc=Nokogiri::HTML(RestClient.get(url))
+    html = Dalli::Client.new.fetch(url,DALLI_TTL){RestClient.get(url))}
+    doc=Nokogiri::HTML(html)
     title = doc.title
     imgs = doc.css('div#ci img')
     img = imgs.first[:src] if !imgs.empty?
