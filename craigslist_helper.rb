@@ -27,7 +27,7 @@ Email me at <a href='mailto:jcwilk@gmail.com'>jcwilk@gmail.com</a> and I will ge
     doc=Nokogiri::HTML(html)
     title = doc.title
     imgs = doc.css('div.tn a').map{|a| "<img src='#{a[:href]}'>" }.join('')
-    imgs = doc.css('div#ci img').map{|i| "<img src='#i{[:src]}'>" }.join('') if imgs.empty?
+    imgs = doc.css('div#ci img').map{|i| "<img src='#{i[:src]}'>" }.join('') if imgs.empty?
     "<a href='#{url}' target='_blank'>#{imgs+'<br/>' if !imgs.empty?}#{title}</a>"
   rescue
     nil
