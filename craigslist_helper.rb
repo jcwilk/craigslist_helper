@@ -7,7 +7,8 @@ class CraigslistHelper < Sinatra::Base
     'http://sfbay.craigslist.org/eby/fuo/3098720830.html',
     'http://sfbay.craigslist.org/eby/fuo/3098735744.html',
     'http://sfbay.craigslist.org/eby/bik/3098773389.html',
-    'http://sfbay.craigslist.org/eby/ele/3098897037.html'
+    'http://sfbay.craigslist.org/eby/ele/3098897037.html',
+    'http://sfbay.craigslist.org/eby/zip/3098897037.html'
   ]
 
   DALLI_TTL = 20 #seconds
@@ -27,6 +28,7 @@ Email me at <a href='mailto:jcwilk@gmail.com'>jcwilk@gmail.com</a> and I will ge
     title = doc.title
     imgs = doc.css('div.tn a').map{|a| "<img src='#{a[:href]}'>" }.join('')
     imgs = doc.css('div#ci img').map{|i| "<img src='#{i[:src]}'>" }.join('') if imgs.empty?
+    return nil if title.empty? && imgs.empty?
     "<a href='#{url}' target='_blank'>#{imgs+'<br/>' if !imgs.empty?}#{title}</a>"
   rescue
     nil
