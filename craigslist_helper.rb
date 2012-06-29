@@ -8,7 +8,8 @@ class CraigslistHelper < Sinatra::Base
     'http://sfbay.craigslist.org/eby/fuo/3098735744.html',
     'http://sfbay.craigslist.org/eby/bik/3098773389.html',
     'http://sfbay.craigslist.org/eby/ele/3098897037.html',
-    'http://sfbay.craigslist.org/eby/zip/3098897037.html'
+    'http://sfbay.craigslist.org/eby/zip/3098897037.html',
+    'http://sfbay.craigslist.org/eby/zip/3098633336.html'
   ]
 
   DALLI_TTL = 20 #seconds
